@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Weather App</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="searchbox">
+    <form action="/" method="post">
+    <div class="search">
+       
+            <input type="text" name= "city" placeholder="City name" spellcheck="false">
+            <button><img src="{{ url_for('static', filename='images/search.png') }}"></button>
+   
+        
+    </div>
+    </form>
+    {% if data %}
+            <div class="weather">
+                <img src="{{ url_for('static', filename=weather_icon) }}" class="weather-icon">
+                
+                <p class = "temp">{{ data['main']['temp'] }}°C</p>
+                <h2>{{ data['name'] }}</h2>
+                
+                <div class="details">
+                    <div class="col">
+                        <img src="{{ url_for('static', filename='images/humidity.png') }}">
+                        <div>
+                            <p class="humidity">{{ data['main']['humidity'] }}%</p>
+                            <p>Humidity</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <img src="{{ url_for('static', filename='images/wind.png') }}">
+                        <div>
+                            <p class="wind">{{ data['wind']['speed'] }} km/h</p>
+                            <p>Wind speed</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        {% else %}
+        <div class="error">
+            <p>Invalid city name</p>
+        </div>
+        
+        {% endif %}
+    
+    
+    </div>
+
+</div>
+</body>
+</html>
+
