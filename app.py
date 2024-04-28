@@ -23,7 +23,7 @@ def index():
 
 def get_weather_icon(weather_main):
     if weather_main == "Clouds":
-        return "images/cloud.png"
+        return "images/clouds.png"
     elif weather_main == "Clear":
         return "images/clear.png"
     elif weather_main == "Rain":
